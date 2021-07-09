@@ -5,6 +5,7 @@
     "module": "commonjs", //配置编译目标使用的模块化标准
     "lib":["es2016"],//配置执行环境
     "outDir": "./dist",//编译结果目录
+    "strictNullChecks": true,  //获得更严格的空类型检查，
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Basic Options */
