@@ -24,4 +24,24 @@ printValues({
     age:12
 })
 
+type Gender = '男' | "女"
+
+type User = {
+    name:string
+    age:number
+    gender:'男'|'女'
+}
+
+let u:User 
+
+u = {
+    name:'dsds',
+    age:12,
+    gender:'男'
+}
+
+
+function getUsers(g:Gender):User[] {
+    return []
+}
 // let n:string = undefined;
