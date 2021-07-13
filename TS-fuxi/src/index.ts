@@ -1,61 +1,37 @@
-type Deck = NormalCard[];
-enum Color{
-    heart = "♥",
-    spade = "♠",
-    club = "♣",
-    diamond = "♦"
-
+enum Permission {
+    Read = 1,   //0001
+    Write = 2,  //0010
+    Create = 4, //0100
+    Delete = 8, //1000
 }
 
-enum Mark {
-    A = "A",
-    two = "2",
-    there = "3",
-    four = "4",
-    five = "5",
-    six = "6",
-    seven = "7",
-    eight = "8",
-    nine = "9",
-    ten = "10",
-    eleven = "J",
-    twelve = "Q",
-    king = "K"
-}
-type NormalCard = {
-    color:Color,
-    mark:Mark
+//1.如何组合权限
+//使用或运算
+//0001
+//或
+// 0010
+// 0011
+let p = Permission.Read | Permission.Write;
+
+//2.如何判断是否拥有某个权限
+// 0011
+// 且
+// 0010
+// 0010
+
+function hasPermission(target:Permission,per:Permission) {
+    return (target & per)  === per;
 }
 
-function createDeck():Deck{
-    const deck:Deck = [];
-    const marks = Object.values(Mark);
-    const colors = Object.values(Color);
-    for(const m of marks) {
-        for(const c of colors) {
-            deck.push({
-                mark:m,
-                color:c
-            })
-        }
-    }
-    return deck
-}
+//判断变量p是否拥有可读权限
 
-function printDeck(deck:Deck){
-    let result = "\n";
-    deck.forEach((card,i) => {
-        let str = card.color + card.mark;
-        
-        result += str + "\t";
-        if((i+1) % 6 === 0) {
-            result += "\n"
-        }
-        
-    })
-    console.log(result);
-}
+console.log(hasPermission(p,Permission.Write))
 
-const deck = createDeck();
-printDeck(deck);
+// 3.如何删除某个权限
+//0011
+//异或   (相同取0，不同取1)
+//0010
+//0001
+p = p ^ Permission.Write;
+console.log(hasPermission(p,Permission.Write))
 
