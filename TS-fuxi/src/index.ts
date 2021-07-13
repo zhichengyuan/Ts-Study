@@ -53,19 +53,43 @@
 //     T1:'wqw'
 // }
 
-interface A {
-    T1:string,
-}
-type B ={
-    T2:number
+// interface A {
+//     T1:string,
+// }
+// type B ={
+//     T2:number
+// }
+
+// type C = {
+//     T3:boolean
+// } & A & B
+
+// let u1:C = {
+//     T2:21,
+//     T1:'sdsd',
+//     T3:true
+// }
+
+
+// interface User {
+//     readonly id:string,
+//     name:string,
+//     age:number
+// }
+
+type User = {
+    readonly id:string
+    name:string
+    age:number
+    readonly arr:readonly string[]  //只读的数组
 }
 
-type C = {
-    T3:boolean
-} & A & B
+// let u:User ={
+//     id:'12',
+//     name:'adsd',
+//     age:333
+// }
 
-let u1:C = {
-    T2:21,
-    T1:'sdsd',
-    T3:true
-}
+// const arr:readonly number[] = [2,3,4];
+
+// const arr1:ReadonlyArray<number> = [4,3,4];
