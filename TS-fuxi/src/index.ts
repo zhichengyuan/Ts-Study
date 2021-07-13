@@ -1,4 +1,4 @@
-import mymodule = require("./mymodules");
-//nnija
+import { createDeck, printDeck } from "./funcs";
+const deck = createDeck();
+printDeck(deck);
 
-mymodule.name;
