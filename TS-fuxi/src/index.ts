@@ -1,82 +1,57 @@
-// let name:string;
-// name = '21';
+type Deck = NormalCard[];
 
-function add(a:number,b:number):number {
-    return a + b;
+type Color = '♥'|'♠'|'♦'|'♣';
+
+type NormalCard = {
+    color:Color
+    mark:number
 }
 
-// let sum:number = add(12,12);
-
-let name = 'kevin';
-
-
-let nums:number[] = [3,4,2];
-let arr:Array<number>=[3,32,32]
-
-
-function printValues(obj:object) {
-    const vals = Object.values(obj);
-    vals.forEach( v => console.log(v))
-}
-
-printValues({
-    name:'dss',
-    age:12
-})
-
-type Gender = '男' | "女"
-
-type User = {
-    name:string
-    age:number
-    gender:'男'|'女'
-}
-
-let u:User 
-
-u = {
-    name:'dsds',
-    age:12,
-    gender:'男'
-}
-
-
-function getUsers(g:Gender):User[] {
-    return []
-}
-// let n:string = undefined;
-
-
-function combine(a:number,b:number):number;
-/**
- * 得到a*b的结果
- * @param a 
- * @param b 
- */
-function combine(a:string,b:string):string;
-/**
- * 得到a和b的拼接的结果
- * @param a 
- * @param b 
- */
-function combine(a:number | string,b:number|string):number | string {
-    if(typeof a === 'number' && typeof b === 'number') {
-        return a * b;
+function creatDeck():Deck {
+    let deck:Deck = [];
+    for(let i = 1;i <= 13;i++) {
+        deck.push({
+            mark:i,
+            color:"♠"
+        })
+        deck.push({
+            mark:i,
+            color:"♣"
+        })
+        deck.push({
+            mark:i,
+            color:"♥"
+        })
+        deck.push({
+            mark:i,
+            color:"♦"
+        })
     }
-    else if (typeof a === 'string' && typeof b === 'string') {
-        return a + b;
-    }
-    throw new Error('a和b必须是相同的类型');
+    return deck;
 }
 
-const result = combine(2,2)
+function printDeck(deck:Deck) {
+    let result = '\n'
+    deck.forEach((card,i) => {
+        let str = card.color;
+        if(card.mark<=10) {
+            str += card.mark;
+        }else if(card.mark === 11) {
+            str += 'J'
+        }else if(card.mark === 12) {
+            str += 'Q'
+        }else {
+            str += 'K'
+        }
+        result += str + '\t';
+        if((i + 1) % 6 ===0) {
+            result += '\n'
+        }
+        
 
-function sum(a:number,b:number,c?:number) {
-    if(c) {
-        return a + b + c
-    }else {
-        return a + b;
-    }
+    })
+    console.log(result)
 }
-sum(3,4)
 
+const deck = creatDeck();
+printDeck(deck)
