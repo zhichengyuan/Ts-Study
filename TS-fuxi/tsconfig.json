@@ -9,7 +9,8 @@
     "removeComments": true,//编译结果移除注释
     "noEmitOnError": true,//错误时不生成编译结果
     "esModuleInterop": true,//启用es模块化交互非es模块导出
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "strictPropertyInitialization": true,
     // "noImplicitUseStrict": true//编译结果中不包括“user strict”
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
