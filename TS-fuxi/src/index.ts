@@ -45,4 +45,4 @@ function mixinArray<T,K>(arr1:T[],arr2:K[]):(T|K)[] {
 }
 
 let newArr = mixinArray([1,2,3],['a','b','c']);
-console.log(newArr)
+console.log(newArr )
