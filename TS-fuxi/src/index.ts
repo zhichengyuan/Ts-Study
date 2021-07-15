@@ -1,39 +1,48 @@
-// function take<T>(arr:T[],n:number):T[] {
-//     if(n >= arr.length) {
-//         return arr;
-//     }
-//     const newArr:T[] = [];
-//     for(let i =0;i<n;i++) {
-//         newArr.push(arr[i]);
-//     }
-//     return newArr
+
+// import { ArrayHelper } from "./ArrayHelper";
+// const helper = new ArrayHelper<number>([2,34,5,3,23])
+// helper.take(3);
+// helper.shuffle()
+
+/**
+ * 将某个对象的name属性的每个单词的首字母大写，然后将该对象返回
+ */
+// interface hasNameProperty{
+//     name:string
 // }
 
-import { ArrayHelper } from "./ArrayHelper";
-
-// const newArr = take<number>([3,4,12,3,34,2],2)
-// console.log(newArr)
-
-// type callback<T> = (n:T,i:number) => boolean;
-
-
-// interface callback<T>{
-//      (n:T,i:number):boolean
+// function nameToUpperCase<T extends hasNameProperty >(obj:T):T {
+//     obj.name = obj.name
+//         .split(" ")
+//         .map(s => s[0].toUpperCase() + s.substr(1))
+//         .join(" ")
+//     return obj
 // }
 
-// function filter<T>(arr:T[],callback:callback<T>):T[] {
-//     const newArr:T[] = [];
-//     arr.forEach((n,i) => {
-//         if(callback(n,i)) {
-//             newArr.push(n)
-//         }
-//     })
-//     return newArr
+// const o = {
+//     name:'kevin yuan',
+//     age:12,
+//     gender:'男'
 // }
 
-// const arr = [2,4,2,4,3,45,33];
-// console.log((filter(arr,n=>n%2 !==0)))
+// const newO = nameToUpperCase(o);
 
-const helper = new ArrayHelper<number>([2,34,5,3,23])
-helper.take(3);
-helper.shuffle()
+// console.log(newO.name);//Kevin Yuan 
+
+//将两个数组进行组合
+//[1,2,3] + ['a','b','c'] = [1,'a',2,'b',3,'c']
+
+function mixinArray<T,K>(arr1:T[],arr2:K[]):(T|K)[] {
+    if(arr1.length != arr2.length) {
+        throw new Error('两个数组长度不等')
+    }
+    let result:(T|K)[] = [];
+    for(let i = 0;i<arr1.length;i++) {
+        result.push(arr1[i]);
+        result.push(arr2[i])
+    }
+    return result
+}
+
+let newArr = mixinArray([1,2,3],['a','b','c']);
+console.log(newArr)
