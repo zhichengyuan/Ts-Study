@@ -1,0 +1,26 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "downlevelIteration": true,//支持迭代器
+    "allowJs": true,//是否允许使用js文件
+    "skipLibCheck": true,//类型声明
+    "esModuleInterop": true,//对 export = ...等到处方式不同的文件进行转换
+    "allowSyntheticDefaultImports": true,//影响js的语法检查
+    "strict": true,//是否开启严格模式
+    "forceConsistentCasingInFileNames": true,//是否严格区分大小写
+    "module": "esnext",//运行模式
+    "moduleResolution": "node",//运行环境
+    "resolveJsonModule": true,//是否允许导入外部json文件
+    "isolatedModules": true,//是否每个文件都是一个模块
+    "noEmit": true,//不生成js文件
+    "jsx": "react"//解析jsx代码
+  },
+  "include": [
+    "src"
+  ]
+}
