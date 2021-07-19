@@ -1,19 +1,40 @@
-import { Dictionary } from "./dictionary";
+export class Tank {
+    x:number = 0
+    y:number = 0
+    zidanSpeed:number =12
+    protected name:string = '坦克'
 
-const dic = new Dictionary<string,number>();
+    shoot() {
+        console.log('发射子弹')
+    }
 
-dic.set('a',2);
-dic.set('v',3);
-dic.set('b',4);
-dic.set('a',5);
+    sayHello() {
+        console.log(this.name)
+    }
+}
 
-console.log('当前键值对数量',dic.size)
-console.log(dic.has('v'))
+export class PlayerTank extends Tank {
+    x:number = 20
+    y:number = 3
+    name:string ='玩家坦克'
+    life:number =5
+    shoot(){
+        console.log('玩家坦克发射子弹')
+    }
+    test(){
+        super.sayHello()
+    }
+}
 
-dic.delete('a');
-dic.forEach((k,v) => {
-    console.log(`${k}:${v}`)
-})
-console.log('当前键值对数量',dic.size)
+export class EnemyTank extends Tank {
 
+}
 
+const p = new PlayerTank()
+console.log(p.x)
+p.shoot()
+p.test()
+
+if(p instanceof PlayerTank) {
+    console.log(p.life)
+}
