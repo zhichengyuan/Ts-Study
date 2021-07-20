@@ -1,92 +1,61 @@
-abstract class Chess {
-    x:number =0;
-    y:number = 0;
-    abstract readonly name:string;
+class User{
+    static users:User[] = []
+    constructor(
+        public loginId:string,
+        public loginPwd:string,
+        public name:string,
+        public age:number,
+    ){
+        //需要将新建的用户加入到数组中
+        User.users.push(this)
+    }
+    sayHello() {
+        console.log(`大家好我是${this.name},今年${this.age}岁了，我的账号是${this.loginId}`)
+    }
+    static login(loginId:string,loginPwd:string):User | undefined {
+        return this.users.find(u => u.loginId === loginId && u.loginPwd === loginPwd)
+    }
+}
 
-    move(targetX:number,targetY:number):boolean{
-        console.log('1.边界判断');
-        console.log('2.目标位置是否有己方棋子');
-        //3. 规则判断
-        if(this.rule(targetX,targetY)) {
-            this.x = targetX;
-            this.y = targetY;
+//登录
 
-            console.log(`${this.name}移动成功了`)
-            return true;
+// const result = User.login('xxx','ssss')
+new User('u1','123','王富贵',12)
+new User('u2','123','狗剩',13)
+new User('u3','123','狗剩1',14)
+
+const res = User.login('u1','123');
+if(res) {
+    res.sayHello()
+}else{
+    console.log('登录失败')
+}
+
+
+
+
+class Board {
+    width:number = 500;
+    height:number = 700;
+    init() {
+        console.log('初始化棋盘')
+    }
+    private constructor () {
+
+    }
+
+    // static readonly singleBoad = new Board()
+
+    private static _board:Board
+    static createBoard():Board {
+        if(this._board ) {
+            return this._board
         }
-        return false
+        this._board = new Board()
+        return this._board
     }
-
-    protected isOutSide() : boolean {
-        console.log('1.边界判断')
-        return false
-    }
-
-    protected targetHesMengyou() {
-        console.log('2.目标位置是否有己方棋子')
-        return false;
-    }
-
-    protected finishMove(targetX:number,targetY:number){
-        this.x = targetX;
-        this.y = targetY;
-        console.log('移动成功')
-    }
-
-    protected abstract rule(targetX:number,targetY:number) :boolean ;
 }
 
-class Horse extends Chess {
-    protected rule(targetX: number, targetY: number): boolean {
-        return false
-    }
-  
-    name: string= '马'
+// const b = Board.singleBoad;
 
-}
-
-class Pao extends Chess {
-    protected rule(targetX: number, targetY: number): boolean {
-        return true
-    }
-   
-    name:string;
-    constructor () {
-        
-        super();
-        this.name = '炮'
-    }
-
-}
-
-class Soldier extends Chess {
-    protected rule(targetX: number, targetY: number): boolean {
-        return true
-    }
-   
-    get name() {
-        return '兵'
-    }
-
-}
-
-// const a = new Chess()
-const a = new Horse()
-const b = new Pao()
-const c = new Soldier()
-a.move(5,7)
-b.move(4,6)
-c.move(2,3)
-console.log(c.x);
-console.log(a.name,b.name,c.name)
-
-// class King extends Chess{
-//     name: string;
-//     protected rule(targetX: number, targetY: number): boolean {
-//         throw new Error("Method not implemented.");
-//     }
-    
-// }
-
-
-
+const b = Board.createBoard()
