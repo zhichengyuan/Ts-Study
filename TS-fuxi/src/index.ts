@@ -1,27 +1,15 @@
-const methodName = "sayHello";
+interface IUser {
+    name:string,
+    age:number,
+    sayHello(this:IUser):void
+}
 
-class User {
-    [prop:string]:any
-    constructor(
-        public name:string,
-        public age:number
-    ){}
-    [methodName]() {
-        console.log('a')
+const u:IUser = {
+    name:'sssf',
+    age:33,
+    sayHello() {
+        console.log(this.name,this.age)
     }
 }
 
-const u = new User('sdsd',12)
-
-u[methodName]()
-
-class MyArray {
-    [index:number]:string
-    0="1"
-    1 = 'wew'
-    2= 'sd'
-}
-
-const my = new MyArray()
-
-my[0]
+const say = u.sayHello();
