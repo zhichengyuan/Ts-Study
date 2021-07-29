@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俄罗斯方块</title>
+    <style>
+        #root1{
+            width: 300px;
+            height: 300px;
+            background: #000;
+            position: relative;
+        }
+         #root{
+            display: flex;
+            justify-content: center;
+        }
+        #panel{
+            width: 300px;
+            height: 300px;
+            background: #000;
+            position: relative;
+            
+        }
+        #tip {
+            margin-left:1em;
+        }
+        #next{
+            width: 120px;
+            height: 120px;
+            position: relative;
+        }
+        #score{
+            font-size: 2em;
+            font-weight: bold;
+            text-align: center;
+        }
+        #msg{
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,.3);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            display: none;
+        }
+        #msg p {
+            border:2px solid #fff;
+            padding: 1em;
+            background: #f20;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <!-- <div id="root1"></div> -->
+    <div id="root">
+        <div id="panel">
+            <div id="msg">
+                <p>游戏暂停</p>
+            </div>
+        </div>
+        <div id="tip">
+            <div id="next"></div>
+            <div id="score"></div>
+            <p>使用键盘进行游戏：</p>
+            <p>↑：旋转</p>
+            <p>←：向左</p>
+            <p>→：向右</p>
+            <p>空格：暂停/开始/恢复</p>
+        </div>
+    </div>
+    <div style="text-align: center;">
+<!--         
+        <button id="start">开始</button>
+        <button id="stop">暂停</button>
+        <button id="remove">移除</button>
+        <button id="btnDown">向下移动</button>
+        <button id="btnLeft">向左移动</button>
+        <button id="btnRight">向右移动</button>
+        <button id="rotateClock">顺时针旋转</button>
+        <button id="add">添加显示者</button> -->
+    </div>
+</body>
+</html>
