@@ -1,33 +1,32 @@
-type constructer = new (...args:any[]) => object;
-function test(target:constructer) {
-    // console.log(target);
-}
-function test1(str:string) {
-    return function (target:constructer) {
+type constructer = new () => Object
 
-    }
+function d(target:any,key:string) {
+    console.log(target,key);
 }
-function d1() {
-    console.log('d1')
-    return function (target:constructer) {
-        console.log('d1 decorator')
-    }
+
+function enumerable(target:any,key:string,descriptor:any) {
+        descriptor.enumerable = true;
 }
-function d2() {
-    console.log('d2')
-    return function (target:constructer) {
-        console.log('d2 decorator')
+
+function useless(target:any,key:string,descriptor:any) {
+    descriptor.value = function () {
+        console.warn(key + '方法已过期')
     }
 }
 
-@test1('这是一个字符串')
-@test
 class A {
+    @d
+    prop1:string = ''
 
+    @d
+    static prop2:string = ''
+    
+    @enumerable
+    @useless
+    method1(){
+        console.log('haha')
+    }
 }
 
-@d1()
-@d2()
-class B {
-
-}
+const a = new A()
+a.method1();
