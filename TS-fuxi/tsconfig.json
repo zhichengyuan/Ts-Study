@@ -13,6 +13,7 @@
     "strictPropertyInitialization": true,
     "noImplicitAny": true,//对索引器进行严格检查，开启对隐式any的检查
     "noImplicitThis": true,//表示不允许this隐式的指向any
+    "experimentalDecorators":true,//是否确定使用装饰器
     // "noImplicitUseStrict": true//编译结果中不包括“user strict”
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
