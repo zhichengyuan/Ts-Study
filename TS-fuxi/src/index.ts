@@ -1,32 +1,34 @@
-type constructer = new () => Object
+import { classDescriptor, printObj, propDescriptor } from "./Descriptor";
 
-function d(target:any,key:string) {
-    console.log(target,key);
+@classDescriptor('用户')
+class User {
+    @propDescriptor('账号')
+    loginId:string
+    @propDescriptor('密码')
+    loginPwd:string
+}
+const u = new User();
+u.loginId = 'adc'
+u.loginPwd = '12232'
+
+printObj(u);
+
+@classDescriptor('文章')
+class Article{
+    @propDescriptor('标题')
+    title:string
+
+    @propDescriptor('内容')
+    content:string
+
+    @propDescriptor('日期')
+    date:Date
+
 }
 
-function enumerable(target:any,key:string,descriptor:any) {
-        descriptor.enumerable = true;
-}
+const ar = new Article();
+ar.title = 'xxxx';
+ar.content = 'adadsafsdfsa';
+ar.date = new Date();
 
-function useless(target:any,key:string,descriptor:any) {
-    descriptor.value = function () {
-        console.warn(key + '方法已过期')
-    }
-}
-
-class A {
-    @d
-    prop1:string = ''
-
-    @d
-    static prop2:string = ''
-    
-    @enumerable
-    @useless
-    method1(){
-        console.log('haha')
-    }
-}
-
-const a = new A()
-a.method1();
+printObj(ar);
