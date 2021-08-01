@@ -1,10 +1,10 @@
-import { classDescriptor, printObj, propDescriptor } from "./Descriptor";
+import { descriptor, printObj,  } from "./Descriptor";
 
-@classDescriptor('用户')
+@descriptor('用户')
 class User {
-    @propDescriptor('账号')
+    @descriptor('账号')
     loginId:string
-    @propDescriptor('密码')
+    @descriptor('密码')
     loginPwd:string
 }
 const u = new User();
@@ -13,15 +13,15 @@ u.loginPwd = '12232'
 
 printObj(u);
 
-@classDescriptor('文章')
+@descriptor('文章')
 class Article{
-    @propDescriptor('标题')
+    @descriptor('标题')
     title:string
 
-    @propDescriptor('内容')
+    @descriptor('内容')
     content:string
 
-    @propDescriptor('日期')
+    @descriptor('日期')
     date:Date
 
 }
@@ -32,3 +32,19 @@ ar.content = 'adadsafsdfsa';
 ar.date = new Date();
 
 printObj(ar);
+
+// import 'reflect-metadata'
+
+// @Reflect.metadata('a1','sfdsaf')
+// @Reflect.metadata('a2','111sfdsaf')
+// @Reflect.metadata('a','一个类')
+// class A {
+//     @Reflect.metadata('prop','一个属性')
+//     prop1:string
+// }
+
+// const obj = new A();
+
+// const res = Reflect.getMetadata('a',A);
+// const res1 = Reflect.getMetadata('prop',obj,'prop1');
+// console.log(res,res1);
