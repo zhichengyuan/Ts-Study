@@ -1,50 +1,67 @@
-import { descriptor, printObj,  } from "./Descriptor";
+import 'reflect-metadata'
 
-@descriptor('用户')
-class User {
-    @descriptor('账号')
-    loginId:string
-    @descriptor('密码')
-    loginPwd:string
-}
-const u = new User();
-u.loginId = 'adc'
-u.loginPwd = '12232'
+// import {IsNotEmpty,Max,MaxLength,Min,MinLength,validate} from 'class-validator'
 
-printObj(u);
+// class RegUser{
+//     @IsNotEmpty({message:'账号不可以为空'})
+//     @MinLength(3,{message:'账号必须至少有五个字符'})
+//     @MaxLength(12,{message:'账号必须至多有12个字符'})
+//     loginId:string
 
-@descriptor('文章')
-class Article{
-    @descriptor('标题')
-    title:string
+//     loginPwd:string
 
-    @descriptor('内容')
-    content:string
-
-    @descriptor('日期')
-    date:Date
-
-}
-
-const ar = new Article();
-ar.title = 'xxxx';
-ar.content = 'adadsafsdfsa';
-ar.date = new Date();
-
-printObj(ar);
-
-// import 'reflect-metadata'
-
-// @Reflect.metadata('a1','sfdsaf')
-// @Reflect.metadata('a2','111sfdsaf')
-// @Reflect.metadata('a','一个类')
-// class A {
-//     @Reflect.metadata('prop','一个属性')
-//     prop1:string
+//     @Min(0,{message:'年龄的最小值为0'})
+//     @Max(100,{message:'年龄的最小值为100'})
+//     age:number
+//     gender:'男' | '女'
 // }
 
-// const obj = new A();
+// const post = new RegUser();
 
-// const res = Reflect.getMetadata('a',A);
-// const res1 = Reflect.getMetadata('prop',obj,'prop1');
-// console.log(res,res1);
+//  post.loginId= '12'
+
+// validate(post).then(errors => {
+//     console.log(errors)
+// })
+import {plainToClass,Type} from 'class-transformer'
+let arr = [
+    {
+      "id": 1,
+      "firstName": "Johny",
+      "lastName": "Cage",
+      "age": 27
+    },
+    {
+      "id": 2,
+      "firstName": "Ismoil",
+      "lastName": "Somoni",
+      "age":' 50'
+    },
+    {
+      "id": 3,
+      "firstName": "Luke",
+      "lastName": "Dacascos",
+      "age": '12'
+    }
+  ]
+
+  export class User {
+    id: number;
+    firstName: string;
+    lastName: string;
+    @Type(() => Number)
+    age: number;
+  
+    getName() {
+      return this.firstName + ' ' + this.lastName;
+    }
+  
+    isAdult() {
+      return this.age > 36 && this.age < 60;
+    }
+  }
+
+  const users = plainToClass(User,arr);
+  users.forEach((user) => {
+    console.log(typeof user.age,user.age)
+  })
