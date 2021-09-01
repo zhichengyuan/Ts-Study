@@ -2,10 +2,6 @@
 
 # dependencies
 /node_modules
-/dist
-node_modules/
-dist/
-upload/
 /.pnp
 .pnp.js
 

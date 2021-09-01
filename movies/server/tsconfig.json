@@ -1,29 +1,19 @@
 {
   "compilerOptions": {
-
-    "target": "es2016",//配置编译目标代码的版本标准
-    "module": "commonjs", //配置编译目标使用的模块化标准
-    "lib":["es2016"],//配置执行环境
-    "outDir": "./dist",//编译结果目录
-    // "strictNullChecks": true,  //获得更严格的空类型检查，
-    "removeComments": true,//编译结果移除注释
-    "noEmitOnError": true,//错误时不生成编译结果
-    "esModuleInterop": true,//启用es模块化交互非es模块导出
-    "moduleResolution": "node",
-    // "strictPropertyInitialization": true,
-    "noImplicitAny": true,//对索引器进行严格检查，开启对隐式any的检查
-    "noImplicitThis": true,//表示不允许this隐式的指向any
-    "experimentalDecorators":true,//是否确定使用装饰器
-    "emitDecoratorMetadata": true,
-    "declaration": true,//自动生成声明文件
-    "sourceMap": true,//源码地图
-    // "noImplicitUseStrict": true//编译结果中不包括“user strict”
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
     /* Basic Options */
     // "incremental": true,                         /* Enable incremental compilation */
-    // "target": "es5",                                /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ES2021', or 'ESNEXT'. */
-    // "module": "commonjs",                           /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
+    "target": "es2016",                                /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017', 'ES2018', 'ES2019', 'ES2020', 'ES2021', or 'ESNEXT'. */
+    "module": "commonjs",                           /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', 'es2020', or 'ESNext'. */
+    "outDir": "./dist",
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "strictNullChecks": true,
+    "removeComments": true,
+    "noEmitOnError": true,
+    "lib": ["ESNext"],
+    
     // "lib": [],                                   /* Specify library files to be included in the compilation. */
     // "allowJs": true,                             /* Allow javascript files to be compiled. */
     // "checkJs": true,                             /* Report errors in .js files. */
@@ -69,7 +59,7 @@
     // "typeRoots": [],                             /* List of folders to include type definitions from. */
     // "types": [],                                 /* Type declaration files to be included in compilation. */
     // "allowSyntheticDefaultImports": true,        /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    // "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "esModuleInterop": true,                        /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
     // "preserveSymlinks": true,                    /* Do not resolve the real path of symlinks. */
     // "allowUmdGlobalAccess": true,                /* Allow accessing UMD globals from modules. */
 
@@ -84,7 +74,8 @@
     // "emitDecoratorMetadata": true,               /* Enables experimental support for emitting type metadata for decorators. */
 
     /* Advanced Options */
-    // "skipLibCheck": true,                           /* Skip type checking of declaration files. */
-    // "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
+    "skipLibCheck": true,                           /* Skip type checking of declaration files. */
+    "forceConsistentCasingInFileNames": true        /* Disallow inconsistently-cased references to the same file. */
   },
+  "include": ["./src"]
 }
